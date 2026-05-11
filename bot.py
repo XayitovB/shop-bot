@@ -18,7 +18,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Initialize bot and dispatcher
-BOT_TOKEN = os.getenv('BOT_TOKEN', 'YOUR_BOT_TOKEN')
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN environment variable is required")
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 router = Router()
